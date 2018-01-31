@@ -3,7 +3,7 @@ import Expense from './expense'
 
 class ExpenseDisplay extends Component {
     renderExpenses() {
-        return  this.props.expenses.map((expense, index) => <Expense key={index} {...expense} />);
+        return  this.props.expenses.map((expense, index) => <Expense key={index} myKey={index} {...expense} />);
     };
     render() {
         return (

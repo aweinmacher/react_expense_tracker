@@ -8,9 +8,17 @@ class App extends Component {
     super(props);
     this.state = { expenses: [] };
     this.addExpense = this.addExpense.bind(this);
+    this.removeExpense = this.removeExpense.bind(this);
   }
   addExpense(expense) {
-    this.setState({ expenses: this.state.expenses.concat(expense)}, function() {
+    this.setState({ expenses: this.state.expenses.concat(expense) }, function () {
+      console.log(this.state.expenses)
+    });
+  }
+  removeExpense(expense) {
+    var temp = this.state.expenses.slice();
+    temp.splice(expense.myKey, 1);
+    this.setState({ expenses: temp }, function () {
       console.log(this.state.expenses)
     });
   }
@@ -18,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <ExpenseForm addExpense={this.addExpense} />
-        <ExpenseDisplay expenses={this.state.expenses}/>
+        <ExpenseDisplay expenses={this.state.expenses} />
       </div>
     );
   }
